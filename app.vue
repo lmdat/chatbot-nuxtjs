@@ -1,6 +1,7 @@
 <template>
   <Head>
-      <Title>AI Chat</Title>
+      <Title>AI Chatbot Demo</Title>
+      <!-- <a href="https://www.flaticon.com/free-icons/chatbot" title="chatbot icons">Chatbot icons created by Freepik - Flaticon</a> -->
   </Head>
   <div class="" style="width: 60vw; margin: 0 auto;">
     <!-- <NuxtRouteAnnouncer />
@@ -9,12 +10,18 @@
     <deep-chat
       style="border-radius: 10px; width: inherit; height: calc(100vh - 70px); font-size: 1.0rem; padding-top: 10px"
       v-if="isLoaded"
-      :demo="false"
       :textInput="{ placeholder: { text: 'Text me something!' } }"
       :history="history"
       :connect='{
         "url": "http://localhost:8080/ai/conversation",
-        "method": "POST"
+        "method": "POST",
+        "stream": true
+      }'
+      :demo=false
+      :avatars='{
+        // "default": {"styles": {"avatar": {"height": "30px", "width": "30px"}, "container": {"marginTop": "8px"}}},
+        "ai": {"src": "/favicon.png", "styles": {"avatar": {"marginLeft": "-3px"}}},
+        "default": {"src": "human.png", "styles": {"avatar": {"borderRadius": "15px"}}}
       }'
     >
       <div
